@@ -3,9 +3,24 @@ const axios = require('axios');
 
 const app = express();
 const port = 5501;
+app.use(express.static('public'));
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
+// Set the MIME type for CSS files
+app.use('*.css', (req, res, next) => {
+    res.header('Content-Type', 'text/css');
+    next();
+});
+
+// Set the MIME type for JavaScript files
+app.use('*.js', (req, res, next) => {
+    res.header('Content-Type', 'application/javascript');
     next();
 });
 
