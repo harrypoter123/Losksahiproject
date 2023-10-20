@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 async function postToFacebook() {
     try {
         // Define your access token and Facebook Page ID.
-        const accessToken = 'EAAS5FCpbQAQBOycdSJ8gAAtcBJiBunU5HOuZBSYX7iZA5Yp9ZBRyYPCZCFyh0K6ZC4ZCCwAVaZCc04yv1NKoyJDdeIfjZAvjvA7mWiO25RXbwqeeoMTmzkCFdbuVEup2PAFUVYR0zq6FV1XLL5dHZCDh2d8SrFR9WE2rpCx4g2P4d80bAZADSYXfI6aPZBZATZCStMEwycZAvhW8SzUBsZBvg48p9KkYcAI2EPEE3qn';
+        const accessToken = 'EAAS5FCpbQAQBO21O5RhiriCE3umWXUsc884Q5HHjqfVuNj1rQ1a9hsZCSqf6oHVn4wkYhBsPXxMu4yyPMMxuFFC12kbyhOdsqAaZCmrdiiZBpIkarNfPkwkWn34FwqUJd2tAuxi699w9LHVc5iJ8sn5zi32u9XujoxZCZBhvb5gNnxzUNP2bHVgBfMLn69CsIdKXJzPZCjcnSavzgZCz1ZBc5ZBZBdCOCeVJMZD';
         const pageId = '135945206274101';
 
         // Define the post data.
