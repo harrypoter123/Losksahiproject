@@ -4,6 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const postTitle = document.getElementById("post-title");
     const postContent = document.getElementById("post-content");
 
+
+    // Get the current news article URL and title
+    const currentUrl = window.location.href;
+    const currentTitle = document.title;
+
     const urlParams = new URLSearchParams(window.location.search);
     const postId = urlParams.get("post_id");
 
