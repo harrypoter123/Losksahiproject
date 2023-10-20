@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Details</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background-color: #f8f9fa; /* Add a light background color */
+            margin-top: -145px;
+        }
+        .container {
+            width: 75%;
+            padding: 8rem;
+        }
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            border-radius: 10px;
+        }
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .card-img-top {
+            max-width: 100%;
+            height: auto;
+        }
+        .card-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .card-text {
+            font-size: 18px;
+        }
+        /* Style for social media icons */
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icon {
+            font-size: 24px;
+            margin-right: 20px;
+            color: #007bff; /* Change the color to match your design */
+        }
+        .social-icon:last-child {
+            margin-right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <img src="" class="card-img-top" alt="" id="post-image">
+            <div class="card-body">
+                <h2 class="card-title" id="post-title"></h2>
+                <div class="card-text" id="post-content"></div>
+
+                <!-- Social media icons and links -->
+                <div class="container">
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <button type="button" id="facebook-login" name="facebook-login" class="btn btn-primary btn-lg btn-block"><i class="fa fa-facebook "></i>
+                          Facebook</button>
+                        <button type="button" id="twitter-login" name="twitter-login" class="btn btn-info btn-lg btn-block"><i class="fa fa-twitter "></i>
+                          Twitter</button>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <script src="next.js"></script>
+    <script type="module">
+         // Import the functions you need from the SDKs you need
+         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+        import { getAuth, FacebookAuthProvider, signInWithPopup, TwitterAuthProvider } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+    
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyClxBCrNC7HLa2W0U2R1gEmbL7nTiG-AwU",
+            authDomain: "loginuserdata-c634a.firebaseapp.com",
+            projectId: "loginuserdata-c634a",
+            storageBucket: "loginuserdata-c634a.appspot.com",
+            messagingSenderId: "1016807940677",
+            appId: "1:1016807940677:web:7dd9214107d4b721e5392c"
+        };
+    
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+        //console.log(auth);
+    
+        const provider = new FacebookAuthProvider();
+        console.log(provider);
+        const provider1 = new TwitterAuthProvider();
+        console.log(provider1);
+    
+        //----- facebook login code start	  
+        document.getElementById("facebook-login").addEventListener("click", function () {
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    // The signed-in user info.
+                    const user = result.user;
+    
+                    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+                    const credential = FacebookAuthProvider.credentialFromResult(result);
+                    const accessToken = credential.accessToken;
+    
+                    alert("Welcome " + user.displayName);
+                    window.location.href = "post";
+                    console.log(user);
+                    // ...
+                })
+                .catch((error) => {
+                    // Handle Errors here.
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log(errorMessage);
+                    // The email of the user's account used.
+                    const email = error.customData.email;
+                    // The AuthCredential type that was used.
+                    const credential = FacebookAuthProvider.credentialFromError(error);
+    
+                    // ...
+                });
+        });
+        //----- End
+    
+    
+        document.getElementById("twitter-login").addEventListener("click", function () {
+      // Sign in with Twitter using a pop-up
+      signInWithPopup(auth, provider1)
+        .then((result) => {
+          // The signed-in user info
+          const user = result.user;
+    
+          // This gives you a Twitter Access Token and Secret. You can use them to access the Twitter API.
+          const credential = TwitterAuthProvider.credentialFromResult(result);
+          const accessToken = credential.accessToken;
+          const secret = credential.secret;
+    
+          alert("Welcome " + user.displayName);
+          console.log(user);
+          // ...
+        })
+        .catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorMessage);
+          // The email of the user's account used.
+          const email = error.customData.email;
+          // The AuthCredential type that was used.
+          const credential = TwitterAuthProvider.credentialFromError(error);
+          // ...
+        });
+    });
+    
+    </script>
+</body>
+</html>

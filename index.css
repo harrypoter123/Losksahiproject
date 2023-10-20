@@ -1,0 +1,46 @@
+/* styles.css */
+
+/* Style the container */
+#posts {
+    font-family: Arial, sans-serif;
+    max-width: 800px; /* Adjust the container width as needed */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Style the list of posts as a grid */
+ul {
+    list-style-type: none;
+    padding: 0;
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(2, 1fr); /* Two columns per row */
+    grid-gap: 20px; /* Add spacing between grid items */
+}
+
+li {
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+li:hover {
+    background-color: #e0e0e0;
+}
+
+/* Style the images */
+img {
+    max-width: 100%; /* Set the maximum width to the container width */
+    max-height: 200px; /* Set the maximum height as needed */
+    display: block; /* Remove any extra space below the image */
+    margin-bottom: 10px; /* Add some space between images and titles */
+}
+
+/* Style the post titles */
+h2 {
+    font-size: 18px; /* Customize the font size as needed */
+    margin: 0;
+    padding: 0;
+}

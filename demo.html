@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Facebook Login Example</title>
+</head>
+<body>
+    <h1>Welcome to My App</h1>
+    <div id="fb-root"></div>
+    <fb:login-button 
+        scope="public_profile,email"
+        onlogin="checkLoginState();">
+    </fb:login-button>
+
+    <script>
+        // Initialize the Facebook SDK
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '1011531783230456', // Replace with your Facebook App ID
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v18.0' // Use the desired API version
+            });
+        };
+
+        // Load the Facebook SDK asynchronously
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        // Function to handle login status
+        function checkLoginState() {
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+        }
+
+        // Custom function to handle the login status response
+        function statusChangeCallback(response) {
+            if (response.status === 'connected') {
+                // User is logged in and authenticated
+                console.log('Logged in successfully.');
+                // You can now make API requests or perform other actions.
+            } else if (response.status === 'not_authorized') {
+                // User is logged into Facebook but not your app
+                console.log('Not authorized. Please log in with your app.');
+            } else {
+                // User is not logged into Facebook
+                console.log('Not logged into Facebook.');
+            }
+        }
+    </script>
+</body>
+</html>
