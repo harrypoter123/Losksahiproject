@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const postsContainer = document.getElementById("posts");
 
-    fetch("http://localhost:5501/api/posts")
+    fetch("https://lokii.onrender.com/api/posts")
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
