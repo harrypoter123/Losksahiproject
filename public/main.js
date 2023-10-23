@@ -53,7 +53,7 @@ async function postToFacebook() {
 
         // Define the post data with the dynamically generated URL and title
         const postData = {
-            link: currentUrl,
+            link: 'https://lokii.onrender.com/api/posts/${postId}',
             message: `Check out this news article: ${currentUrl}`,
         };
 
