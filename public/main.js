@@ -77,7 +77,6 @@
 //         console.error(error);
 //     }
 // }
-
 document.addEventListener("DOMContentLoaded", () => {
     const postDetailsContainer = document.getElementById("post-details");
     const postImage = document.getElementById("post-image");
@@ -99,6 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Store postId in a variable accessible to postToFacebook
     const selectedPostId = postId;
 
+    // Fetch post details
     fetch(`https://lokii.onrender.com/api/posts/${postId}`)
         .then((response) => {
             if (!response.ok) {
