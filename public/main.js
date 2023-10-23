@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
 async function postToFacebook() {
     try {
         // Define your access token and Facebook Page ID.
-        const accessToken = 'EAAS5FCpbQAQBO21O5RhiriCE3umWXUsc884Q5HHjqfVuNj1rQ1a9hsZCSqf6oHVn4wkYhBsPXxMu4yyPMMxuFFC12kbyhOdsqAaZCmrdiiZBpIkarNfPkwkWn34FwqUJd2tAuxi699w9LHVc5iJ8sn5zi32u9XujoxZCZBhvb5gNnxzUNP2bHVgBfMLn69CsIdKXJzPZCjcnSavzgZCz1ZBc5ZBZBdCOCeVJMZD';
+        const accessToken = 'EAAS5FCpbQAQBO9rnJR5F9lt4hSnUZBQdUZC39RhV4CNArZBLTtyBLmASVmW3gdF9xYqHBmKyVwQLAQt1PZCHDZBjnn8ZAngI95RoNAPZBQvj98yBqlhwkAEr4aSziQ6elvnvYpeapXxZC7IhDvn4S3R04avyhThJjgPuUD1y8FCqylHpYt5lfQm3MYOkDdouBQ0qpawj87Yu2unBuvZBjHHx3fZBya4b7lrlqR';
         const pageId = '135945206274101';
 
         // Get the current news article URL and title
